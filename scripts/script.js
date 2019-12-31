@@ -1,5 +1,5 @@
-const errorAudio = new Audio('../style/sounds/erro.mp3');
-const applauseAudio = new Audio('../style/sounds/app-8.mp3');
+const errorAudio = new Audio('./style/sounds/erro.mp3');
+const applauseAudio = new Audio('./style/sounds/app-8.mp3');
 
 const scriptContainer = document.querySelector('#scriptContainer');
 const testInput = document.querySelector('#testInput');
