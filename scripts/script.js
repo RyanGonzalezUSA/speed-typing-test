@@ -16,7 +16,6 @@ let totalErrors = 0;
 // convert text to spans, in order to apply css for each individual character.
 function initiateTestScript(params) {
   const storedTestScript = localStorage.getItem('test')
-  console.log(storedTestScript)
   if(storedTestScript){
     scriptContainer.innerHTML = storedTestScript;
   }
