@@ -4,19 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/f2795b618c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style/normailize.css" />
     <link rel="stylesheet" href="./style/style.css" />
     <script src="./scripts/script.js" defer></script>
     <script src="./scripts/add_test.js" defer></script>
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Orbitron&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Girassol&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet" />
 
     <title>typing test</title>
   </head>
@@ -24,7 +18,10 @@
     <div class="container">
       <header>
         <div id="logo" class="logo">typing speed test</div>
-        <button class="btn" id="btnAddTest">Add custom Test</button>
+        <div>
+          <button class="btn" id="btnAddTest">Add custom Test</button>
+          <i id="toggleSound" class="fas fa-volume-up mic" onclick="toggleSoundEffects();"></i>
+        </div>
       </header>
       <main>
         <div class="background"></div>

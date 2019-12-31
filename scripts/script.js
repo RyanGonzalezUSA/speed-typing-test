@@ -1,7 +1,8 @@
 const errorAudio = new Audio('./style/sounds/erro.mp3');
 const applauseAudio = new Audio('./style/sounds/app-8.mp3');
-
+let withSound = true;
 const scriptContainer = document.querySelector('#scriptContainer');
+const btnToggleSound = document.querySelector('#toggleSound');
 const testInput = document.querySelector('#testInput');
 const wordCount = document.querySelector('#wordCount');
 const timer = document.querySelector('#timer');
@@ -97,7 +98,9 @@ testInput.addEventListener('input', (e) => {
       // incorrect inputs
       charSpan.classList.remove('correct');
       charSpan.classList.add('incorrect');
-      errorAudio.play();
+      if(withSound){
+        errorAudio.play();
+      }
       inCorrectChars += 1;
     }
   });
@@ -108,7 +111,9 @@ testInput.addEventListener('input', (e) => {
 
   // stop timer automatically if test taker finished
   if (arrayValues.length >= arraySpans.length) {
-    applauseAudio.play();
+    if(withSound){
+      applauseAudio.play();
+    }
     inTestMode = false;
     totalErrors = 0;
     stopTimer();
@@ -121,3 +126,13 @@ btnAddTest.addEventListener('click', (e) => {
     .then(data => data.text())
     .then(html => mainContainer.innerHTML = html);
 });
+
+function toggleSoundEffects() {
+  btnToggleSound.className='';
+  withSound = !withSound;
+  if(withSound){
+    btnToggleSound.classList.add("mic", "fas", "fa-volume-up")
+  }else{
+    btnToggleSound.classList.add("mic", "fas", "fa-volume-mute")
+  }
+}

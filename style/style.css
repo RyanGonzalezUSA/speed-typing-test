@@ -142,4 +142,14 @@ footer {
 opacity: 1;
 }
 
+.mic{
+  color: aliceblue;
+  padding-left: 0.5rem;
+  cursor: pointer;
+}
+.mic:hover{
+  color: burlywood;
+}
+
 @media (max-width: 768px) {}
+
