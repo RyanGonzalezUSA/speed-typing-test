@@ -4,12 +4,19 @@ const wordCount = document.querySelector('#wordCount');
 const timer = document.querySelector('#timer');
 const testResultSpeed = document.querySelector('#testResultSpeed');
 const testResultAccuracy = document.querySelector('#testResultAccuracy');
+const btnAddTest = document.querySelector('#btnAddTest');
+const mainContainer = document.querySelector('main');
 let inTestMode = false;
 let scriptWordCount, scriptCharsCount;
 let totalErrors = 0;
 
 // convert text to spans, in order to apply css for each individual character.
 function initiateTestScript(params) {
+  const storedTestScript = localStorage.getItem('test')
+  console.log(storedTestScript)
+  if(storedTestScript){
+    scriptContainer.innerHTML = storedTestScript;
+  }
   const testScript = scriptContainer.innerHTML.trim();
   scriptContainer.innerHTML = "";
   testScript.split('').forEach(char => {
@@ -26,7 +33,7 @@ function initiateTestScript(params) {
 // timer related code
 let startTime, testSetInterval, secs;
 
-function startTimer(params) {
+function startTimer() {
   startTime = new Date();
   testSetInterval = setInterval(() => {
     timer.innerText = getTimerTime();
@@ -56,7 +63,7 @@ function updateSpeedAndAccuracyCalc(allTypedEntries, uncorrectedErrors) {
   testResultSpeed.innerText = `${netSpeed.toFixed(2)} WPM`
 
   // calc accuracy
-  const accuracy = (((allTypedEntries - totalErrors)/ allTypedEntries) * 100)
+  const accuracy = (((allTypedEntries - totalErrors) / allTypedEntries) * 100)
   testResultAccuracy.innerText = `${accuracy.toFixed(2)} %`
 }
 
@@ -104,3 +111,9 @@ testInput.addEventListener('input', (e) => {
   }
 });
 
+btnAddTest.addEventListener('click', (e) => {
+  e.preventDefault();
+  fetch('add_test.html')
+    .then(data => data.text())
+    .then(html => mainContainer.innerHTML = html);
+})

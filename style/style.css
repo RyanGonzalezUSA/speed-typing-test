@@ -1,5 +1,5 @@
 .background {
-  background: url('./bg.jpg');
+  background: url('./images/bg.jpg');
   background-size: cover;
   bottom: 0;
   top: 0;
@@ -16,23 +16,16 @@
 }
 
 @keyframes movingclouds {
-  0% {
-    margin-left: 0%;
-  }
-
-  100% {
-    margin-left: -100%;
-  }
+  0% {margin-left: 0%;}
+  100% {margin-left: -100%;}
 }
 
 .container {
   display: grid;
-
   grid-template-areas:
     "header"
     "content"
     "footer";
-
   grid-template-columns: 1fr;
   grid-template-rows: 3rem 1fr 3rem;
   height: 100vh;
@@ -45,6 +38,7 @@ header {
   align-items: center;
   padding: 0 1rem;
   background: #333333;
+  opacity: 0.8;
 }
 
 .logo {
@@ -69,12 +63,8 @@ footer {
   background-color: #333333;
   justify-content: center;
   align-items: center;
+  opacity: 0.8;
 }
-
-/* main content */
-/* .container {
-  font-size: 2rem;
-} */
 
 .script-container {
   font-size: 1.5rem;
@@ -84,7 +74,6 @@ footer {
 
 .test-input {
   width: 100%;
-  background-color: transparent;
   border: 1px solid darkgray;
   border-radius: 0.5rem;
   outline: none;
@@ -127,8 +116,8 @@ footer {
 
 .script-test-container {
   border: 1px solid darkgray;
-  margin: 0 4rem;
-  padding: 4rem 2rem;
+  margin: 1rem 4rem 1rem 4rem;
+  padding: 1rem 2rem 2rem 2rem;
   border-radius: 1rem;
   background-color: white;
 }

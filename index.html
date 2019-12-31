@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./normailize.css" />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style/normailize.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="./scripts/script.js" defer></script>
+    <script src="./scripts/add_test.js" defer></script>
+
     <link
       href="https://fonts.googleapis.com/css?family=Orbitron&display=swap"
       rel="stylesheet"
@@ -22,6 +24,7 @@
     <div class="container">
       <header>
         <div id="logo" class="logo">typing speed test</div>
+        <button id="btnAddTest" class="btnAddTest">Add Test</button>
       </header>
       <main>
         <div class="background"></div>
@@ -30,7 +33,12 @@
         </div>
 
         <div class="script-test-container">
-          <div id="scriptContainer" class="script-container">you kill a man, you steal a life. You steal his wife's right to a husband, rob his children of a father. When you tell a lie, you steal someone's right to the truth. When you cheat, you steal the right to fairness.</div>
+          <div id="scriptContainer" class="script-container">
+            you kill a man, you steal a life. You steal his wife's right to a
+            husband, rob his children of a father. When you tell a lie, you
+            steal someone's right to the truth. When you cheat, you steal the
+            right to fairness.
+          </div>
           <div id="scriptInfo" class="script-info">
             <span id="wordCount" class="word-count"></span>
           </div>
@@ -42,8 +50,14 @@
             class="test-input"
           ></textarea>
           <div id="testResult" class="test-result">
-            <p>Speed:    <span id="testResultSpeed" class="test-result-speed"></span></p>
-            <p>accuracy: <span id="testResultAccuracy" class="test-result-accuracy"></span></p>
+            <p>
+              Speed:
+              <span id="testResultSpeed" class="test-result-speed"></span>
+            </p>
+            <p>
+              accuracy:
+              <span id="testResultAccuracy" class="test-result-accuracy"></span>
+            </p>
           </div>
         </div>
       </main>
