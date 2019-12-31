@@ -1,3 +1,6 @@
+const errorAudio = new Audio('../style/sounds/erro.mp3');
+const applauseAudio = new Audio('../style/sounds/app-8.mp3');
+
 const scriptContainer = document.querySelector('#scriptContainer');
 const testInput = document.querySelector('#testInput');
 const wordCount = document.querySelector('#wordCount');
@@ -95,6 +98,7 @@ testInput.addEventListener('input', (e) => {
       // incorrect inputs
       charSpan.classList.remove('correct');
       charSpan.classList.add('incorrect');
+      errorAudio.play();
       inCorrectChars += 1;
     }
   });
@@ -105,6 +109,7 @@ testInput.addEventListener('input', (e) => {
 
   // stop timer automatically if test taker finished
   if (arrayValues.length >= arraySpans.length) {
+    applauseAudio.play();
     inTestMode = false;
     totalErrors = 0;
     stopTimer();
@@ -116,4 +121,4 @@ btnAddTest.addEventListener('click', (e) => {
   fetch('add_test.html')
     .then(data => data.text())
     .then(html => mainContainer.innerHTML = html);
-})
+});

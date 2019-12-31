@@ -9,6 +9,7 @@ function testTemplateInputChange(e) {
 function saveTemplate(e) {
   e.preventDefault();
   const testTemplateInput = document.querySelector('#testTemplateInput');
-  const templateText = testTemplateInput.value;
+  const templateText = testTemplateInput.value.trim();
   localStorage.setItem('test', templateText)
+  window.location = window.location.href
 }
