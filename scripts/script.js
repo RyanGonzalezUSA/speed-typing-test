@@ -1,5 +1,5 @@
-const errorAudio = new Audio('../style/sounds/erro.mp3');
-const applauseAudio = new Audio('../style/sounds/app-8.mp3');
+const errorAudio = new Audio('/style/sounds/erro.mp3');
+const applauseAudio = new Audio('/style/sounds/app-8.mp3');
 
 const scriptContainer = document.querySelector('#scriptContainer');
 const testInput = document.querySelector('#testInput');
@@ -14,9 +14,8 @@ let scriptWordCount, scriptCharsCount;
 let totalErrors = 0;
 
 // convert text to spans, in order to apply css for each individual character.
-function initiateTestScript(params) {
+function initiateTestScript() {
   const storedTestScript = localStorage.getItem('test')
-  console.log(storedTestScript)
   if(storedTestScript){
     scriptContainer.innerHTML = storedTestScript;
   }
