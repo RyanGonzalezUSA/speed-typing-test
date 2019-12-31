@@ -13,6 +13,6 @@ speed-typing-test, is application to test your typing speed and accuracy. This a
 
 ## wireframes
 
-![Home page]("/docs/wireframe/1-Homepage.png")
-![Add Test Page]("/docs/wireframe/2-add-test.png")
+![Home page]("[/docs/wireframe/1-Homepage.png](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/wireframe/1-Homepage.png)")
+![Add Test Page]("[/docs/wireframe/2-add-test.png](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/wireframe/2-add-test.png)")
 
