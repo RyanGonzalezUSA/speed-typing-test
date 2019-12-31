@@ -1,38 +1,39 @@
-// const scriptContainer = document.querySelector('#scriptContainer');
-// scriptContainer.addEventListener('blur',function(e){
-//   console.dir(e.target.value)
-// })
-
-
 const scriptContainer = document.querySelector('#scriptContainer');
 const testInput = document.querySelector('#testInput');
 const wordCount = document.querySelector('#wordCount');
 const timer = document.querySelector('#timer');
+const testResultSpeed = document.querySelector('#testResultSpeed');
+const testResultAccuracy = document.querySelector('#testResultAccuracy');
 let inTestMode = false;
+let scriptWordCount, scriptCharsCount;
+let totalErrors = 0;
 
+// convert text to spans, in order to apply css for each individual character.
 function initiateTestScript(params) {
-  const testScript = scriptContainer.innerHTML;
+  const testScript = scriptContainer.innerHTML.trim();
   scriptContainer.innerHTML = "";
   testScript.split('').forEach(char => {
     const characterSpan = document.createElement('span');
     characterSpan.innerText = char;
     scriptContainer.appendChild(characterSpan);
   });
-
-  wordCount.innerText = `${testScript.split(' ').length} words. ${testScript.split('').length} characters.`;
+  // display passage information
+  scriptWordCount = testScript.split(' ').length;
+  scriptCharsCount = testScript.split('').length;
+  wordCount.innerText = `${scriptWordCount} words. ${scriptCharsCount} characters.`;
 };
 
+// timer related code
+let startTime, testSetInterval, secs;
 
-let startTime;
-let testSetInterval;
 function startTimer(params) {
   startTime = new Date();
   testSetInterval = setInterval(() => {
     timer.innerText = getTimerTime();
   }, 1000);
 }
-function getTimerTime() { 
- let secs = Math.floor((new Date() - startTime) / 1000);
+function getTimerTime() {
+  secs = Math.floor((new Date() - startTime) / 1000);
   var hours = Math.floor(secs / 3600);
   var minutes = Math.floor((secs - (hours * 3600)) / 60);
   var seconds = secs - (hours * 3600) - (minutes * 60);
@@ -43,9 +44,22 @@ function getTimerTime() {
   return hours + ':' + minutes + ':' + seconds;
 }
 
-function stopTimer(params) {
+function stopTimer() {
   clearInterval(testSetInterval);
 }
+
+// speed calculation
+function updateSpeedAndAccuracyCalc(allTypedEntries, uncorrectedErrors) {
+  // calc speed
+  let mins = secs / 60;
+  const netSpeed = (((allTypedEntries - uncorrectedErrors) / 5) / mins);
+  testResultSpeed.innerText = `${netSpeed.toFixed(2)} WPM`
+
+  // calc accuracy
+  const accuracy = (((allTypedEntries - totalErrors)/ allTypedEntries) * 100)
+  testResultAccuracy.innerText = `${accuracy.toFixed(2)} %`
+}
+
 
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -54,12 +68,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 testInput.addEventListener('input', (e) => {
   // start timer once test taker start to type
-  if(!inTestMode){
+  if (!inTestMode) {
     inTestMode = true;
     startTimer();
   }
   const arraySpans = scriptContainer.querySelectorAll('span');
   const arrayValues = testInput.value;
+  let inCorrectChars = 0;
 
   arraySpans.forEach((charSpan, idx) => {
     const currChar = arrayValues[idx];
@@ -70,15 +85,21 @@ testInput.addEventListener('input', (e) => {
       charSpan.classList.remove('incorrect');
       charSpan.classList.add('correct');
     } else {
+      // incorrect inputs
       charSpan.classList.remove('correct');
       charSpan.classList.add('incorrect');
+      inCorrectChars += 1;
     }
   });
 
-  
+  totalErrors += inCorrectChars;
+  // update typing speed
+  updateSpeedAndAccuracyCalc(arrayValues.length, inCorrectChars);
+
   // stop timer automatically if test taker finished
-  if(arraySpans.length === arrayValues.length){
+  if (arrayValues.length >= arraySpans.length) {
     inTestMode = false;
+    totalErrors = 0;
     stopTimer();
   }
 });

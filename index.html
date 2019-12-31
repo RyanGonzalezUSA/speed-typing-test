@@ -7,30 +7,45 @@
     <link rel="stylesheet" href="./normailize.css" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
-    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Girassol&display=swap"
+      rel="stylesheet"
+    />
+
     <title>typing test</title>
   </head>
   <body>
     <div class="container">
       <header>
-        logo/ Header content / change theme
+        <div id="logo" class="logo">typing speed test</div>
       </header>
       <main>
+        <div class="background"></div>
         <div id="timerContainer" class="timer-container">
-          <span id="timer">00:00:00</span>
+          <span class="timer" id="timer">00:00:00</span>
         </div>
-        <div id="scriptContainer" class="script-container">you kill a man, you steal a life. You steal his wife's right to a husband, rob his children of a father. When you tell a lie, you steal someone's right to the truth. When you cheat, you steal the right to fairness.</div>
-        <div id="scriptInfo" class="scriptInfo">
-          <span id="wordCount" class="word-count"></span>
+
+        <div class="script-test-container">
+          <div id="scriptContainer" class="script-container">you kill a man, you steal a life. You steal his wife's right to a husband, rob his children of a father. When you tell a lie, you steal someone's right to the truth. When you cheat, you steal the right to fairness.</div>
+          <div id="scriptInfo" class="script-info">
+            <span id="wordCount" class="word-count"></span>
+          </div>
+          <textarea
+            id="testInput"
+            name="testInput"
+            rows="10"
+            autofocus
+            class="test-input"
+          ></textarea>
+          <div id="testResult" class="test-result">
+            <p>Speed:    <span id="testResultSpeed" class="test-result-speed"></span></p>
+            <p>accuracy: <span id="testResultAccuracy" class="test-result-accuracy"></span></p>
+          </div>
         </div>
-        <textarea
-          id="testInput"
-          name="testInput"
-          rows="10"
-          autofocus
-          class="test-input"
-        ></textarea>
       </main>
       <footer>
         contact me
