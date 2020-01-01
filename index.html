@@ -4,33 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="https://kit.fontawesome.com/f2795b618c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/f2795b618c.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./style/normailize.css" />
     <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/car.css" />
+    <link rel="stylesheet" href="./style/congrats_modal.css" />
+
+    <script src="./scripts/congrats_modal.js" defer></script>
     <script src="./scripts/script.js" defer></script>
     <script src="./scripts/add_test.js" defer></script>
-    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Girassol&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./style/images/keyboard_icon.jpg" />
 
     <title>typing test</title>
   </head>
-  <body>
+  <body onresize="updateCarTrackWidth()">
     <div class="container">
       <header>
         <div id="logo" class="logo">typing speed test</div>
         <div>
           <button class="btn" id="btnAddTest">Add custom Test</button>
-          <i id="toggleSound" class="fas fa-volume-up mic" onclick="toggleSoundEffects();"></i>
+          <i
+            id="toggleSound"
+            class="fas fa-volume-mute mic"
+            onclick="toggleSoundEffects();"
+          ></i>
         </div>
       </header>
+      <div class="background"></div>
       <main>
-        <div class="background"></div>
+        <div id="carContainer" class="car-container">
+          <img src="./style/images/car3.gif" class="car" id="car" alt="" />
+          <div class="end-line"></div>
+        </div>
         <div id="timerContainer" class="timer-container">
           <span class="timer" id="timer">00:00:00</span>
         </div>
-
         <div class="script-test-container">
-          <div id="scriptContainer" class="script-container">you kill a man, you steal a life. You steal his wife's right to a husband, rob his children of a father. When you tell a lie, you steal someone's right to the truth. When you cheat, you steal the right to fairness.</div>
+          <div id="scriptContainer" class="script-container">
+            I've learned that people will forget what you said, people will
+            forget what you did, but people will never forget how you made them
+            feel.
+          </div>
           <div id="scriptInfo" class="script-info">
             <span id="wordCount" class="word-count"></span>
           </div>
@@ -41,21 +68,43 @@
             autofocus
             class="test-input"
           ></textarea>
-          <div id="testResult" class="test-result">
-            <p>
-              Speed:
-              <span id="testResultSpeed" class="test-result-speed"></span>
-            </p>
-            <p>
-              accuracy:
-              <span id="testResultAccuracy" class="test-result-accuracy"></span>
-            </p>
+          <div class="test-footer">
+            <div id="testResult" class="test-result">
+              <p>
+                Speed:
+                <span id="testResultSpeed" class="test-result-speed"></span>
+              </p>
+              <p>
+                accuracy:
+                <span
+                  id="testResultAccuracy"
+                  class="test-result-accuracy"
+                ></span>
+              </p>
+            </div>
+            <button id="btnEndTest" class="btn btn-end-test">End Test</button>
           </div>
         </div>
       </main>
       <footer>
-        contact me
+        <a
+          class="git-link"
+          target="_blank"
+          href="https://github.com/RyanGonzalezUSA"
+          ><i class="fab fa-github-square"></i
+        ></a>
       </footer>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeCongratsModal();">&times;</span>
+        <div class="congrats-content">
+          <img class="pikachu" src="./style/images/pikachu.png" alt="congratulations">
+            <p class="congrats-msg">Congratulations</p>
+        </div>
+      </div>
     </div>
   </body>
 </html>

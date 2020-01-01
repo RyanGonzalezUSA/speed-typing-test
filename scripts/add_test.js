@@ -1,3 +1,5 @@
+// js functions related to add_test.html
+
 function testTemplateInputChange(e) {
   const testTemplateInfo = document.querySelector('#testTemplateInfo');
   const templateText = e.target.value;

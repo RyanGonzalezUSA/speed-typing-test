@@ -66,6 +66,7 @@ footer {
   justify-content: center;
   align-items: center;
   opacity: 0.7;
+  font-size: 2rem;
 }
 
 .script-container {
@@ -151,5 +152,19 @@ opacity: 1;
   color: burlywood;
 }
 
+.test-footer{
+  display: flex;
+  justify-content: space-between;
+}
+.git-link{
+  color: white;
+  font-size: 3rem;
+}
+
+.btn-end-test{
+  height: 2.5rem;
+  width: 5rem;
+  opacity: 0.9;
+}
 @media (max-width: 768px) {}
 
