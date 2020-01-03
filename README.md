@@ -12,8 +12,9 @@ speed-typing-test, is application to test your typing speed and accuracy. This a
 - you can end your test at any point by clicking end-test button
 
 ## wireframes
-![Home page](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/wireframe/1-Homepage.png)
-![add test page](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/wireframe/2-add-test.png)
+![Home page](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/wireframe/1.png)
+![add custom test](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/wireframe/2.png)
+![take test](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/wireframe/3.png)
 
 ## Implementation Timeline
 ### Day 1:

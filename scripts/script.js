@@ -109,7 +109,7 @@ function saveTemplate(e) {
   localStorage.setItem('test', templateText)
   testTemplateInput.value = "";
   initiateTestScript();
-  window.location = `${window.location.protocol}//${window.location.host}#takeTest`;
+  window.location = `https://ryangonzalezusa.github.io/speed-typing-test/#takeTest`;
 }
 
 function getRandomQuote(event) {
