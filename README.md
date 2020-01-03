@@ -27,6 +27,8 @@ speed-typing-test, is application to test your typing speed and accuracy. This a
 
 ## screen shots 
 
-![add test page](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/screenshots/addtest.gif)
+![app preview](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/screenshots/preview.gif)
 
-![test page](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/screenshots/test.gif)
+![add custom test](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/screenshots/custom.gif)
+
+![take test](https://github.com/RyanGonzalezUSA/speed-typing-test/blob/master/docs/screenshots/test.gif)
