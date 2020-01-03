@@ -1,3 +1,8 @@
+let randomQuotes;
+fetch("./scripts/quotes.json")
+  .then(response => randomQuotes = response.json())
+  .then(json => randomQuotes = json)
+
 // sound related variables
 const errorAudio = new Audio('./style/sounds/erro.mp3');
 const applauseAudio = new Audio('./style/sounds/app-8.mp3');
@@ -10,8 +15,6 @@ const testInput = document.querySelector('#testInput');
 const wordCount = document.querySelector('#wordCount');
 const timer = document.querySelector('#timer');
 const testResultSpeed = document.querySelector('#testResultSpeed');
-const testResultAccuracy = document.querySelector('#testResultAccuracy');
-const btnAddTest = document.querySelector('#btnAddTest');
 const btnEndTest = document.querySelector('#btnEndTest');
 const mainContainer = document.querySelector('main');
 
@@ -88,18 +91,40 @@ function endTest(event) {
   inTestMode = false;
   totalErrors = 0;
   stopTimer();
+  moveCar(0);
+}
+
+function testTemplateInputChange(e) {
+  const testTemplateInfo = document.querySelector('#testTemplateInfo');
+  const templateText = e.target.value;
+  const wordCount = templateText.split(' ').length;
+  const charCount = templateText.split('').length;
+  testTemplateInfo.innerText = `${wordCount} words. ${charCount} characters.`
+}
+
+function saveTemplate(e) {
+  e.preventDefault();
+  const testTemplateInput = document.querySelector('#testTemplateInput');
+  const templateText = testTemplateInput.value.trim();
+  localStorage.setItem('test', templateText)
+  testTemplateInput.value = "";
+  initiateTestScript();
+  window.location = `${window.location.protocol}//${window.location.host}#takeTest`;
+}
+
+function getRandomQuote(event) {
+  event.preventDefault();
+  // const randomObj =  randomQuotes[Math.floor((Math.random() * randomQuotes.length))];
+  // scriptContainer.innerText = Object.values(randomObj)[0];
+  scriptContainer.innerText = randomQuotes[Math.floor((Math.random() * randomQuotes.length))];
 }
 
 // typing speed and accuracy calculation
 function updateSpeedAndAccuracyCalc(allTypedEntries, uncorrectedErrors) {
-  // calc speed
   let mins = secs / 60;
   const netSpeed = (((allTypedEntries - uncorrectedErrors) / 5) / mins);
-  testResultSpeed.innerText = `${netSpeed.toFixed(2)} WPM`
-
-  // calc accuracy
   const accuracy = (((allTypedEntries - totalErrors) / allTypedEntries) * 100)
-  testResultAccuracy.innerText = `${accuracy.toFixed(2)} %`
+  testResultSpeed.innerText = `Speed: ${netSpeed.toFixed(2)} WPM. Accuracy: ${accuracy.toFixed(2)} %`
 }
 
 // event listeners
@@ -143,17 +168,10 @@ testInput.addEventListener('input', (e) => {
 
   // stop timer automatically if test taker finished
   if (arrayValues.length >= arraySpans.length) {
-    
+
     openCongratsModal();
     endTest();
   }
-});
-
-btnAddTest.addEventListener('click', (e) => {
-  e.preventDefault();
-  fetch('add_test.html')
-    .then(data => data.text())
-    .then(html => mainContainer.innerHTML = html);
 });
 
 // btnToggleSound event listener
@@ -167,12 +185,9 @@ function toggleSoundEffects() {
   }
 };
 
-
 btnEndTest.addEventListener('click', endTest);
 
-
 // car functionality
-
 
 function moveCar(steps) {
   const moveTo = steps * carStep;

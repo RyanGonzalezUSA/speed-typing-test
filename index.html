@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script
-      src="https://kit.fontawesome.com/f2795b618c.js"
-      crossorigin="anonymous"
-    ></script>
+    
+    <script src="https://kit.fontawesome.com/f2795b618c.js" crossorigin="anonymous" ></script>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap"  rel="stylesheet" />
+    <link  href="https://fonts.googleapis.com/css?family=Girassol&display=swap"rel="stylesheet" />
+    <link rel="shortcut icon" href="./style/images/keyboard_icon.jpg" />
+
     <link rel="stylesheet" href="./style/normailize.css" />
     <link rel="stylesheet" href="./style/style.css" />
     <link rel="stylesheet" href="./style/car.css" />
@@ -15,85 +18,134 @@
 
     <script src="./scripts/congrats_modal.js" defer></script>
     <script src="./scripts/script.js" defer></script>
-    <script src="./scripts/add_test.js" defer></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Orbitron&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap" rel="stylesheet">
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Girassol&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="shortcut icon" href="./style/images/keyboard_icon.jpg" />
 
     <title>typing test</title>
   </head>
   <body onresize="updateCarTrackWidth()">
     <div class="container">
-      <header>
-        <div id="logo" class="logo">typing speed test</div>
-        <div>
-          <button class="btn" id="btnAddTest">Add custom Test</button>
-          <i
+      <nav class="navbar">
+        <div style="width: 15rem; display:flex;">
+          <a style="margin: auto; text-decoration:none;"  class="logo" href="#home"  >Speed Typing Test</a >
+        </div>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#customTest">Custom Test</a></li>
+          <li><a href="#takeTest">Take Test</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mic-container">
+            <i
             id="toggleSound"
             class="fas fa-volume-mute mic"
             onclick="toggleSoundEffects();"
           ></i>
         </div>
-      </header>
-      <div class="background"></div>
-      <main>
-        <div id="carContainer" class="car-container">
-          <img src="./style/images/car3.gif" class="car" id="car" alt="" />
-          <div class="end-line"></div>
-        </div>
-        <div id="timerContainer" class="timer-container">
-          <span class="timer" id="timer">00:00:00</span>
-        </div>
-        <div class="script-test-container">
-          <div id="scriptContainer" class="script-container">
-            I've learned that people will forget what you said, people will
-            forget what you did, but people will never forget how you made them
-            feel.
+      </nav>
+
+      <section id="home" class="sec-home">
+        <div class="sec-home__bg"></div>
+        <div class="sec-home__content">
+          <div>
+            <img
+              class="sec-home__content__img"
+              src="./style/images/pikachu.png"
+            />
           </div>
-          <div id="scriptInfo" class="script-info">
-            <span id="wordCount" class="word-count"></span>
+          <div class="sec-home__content__text">
+            <h2>Practice Typing and have fun</h2>
+            <p>you can take random test</p>
+            <p>or add your custom test</p>
           </div>
-          <textarea
-            id="testInput"
-            name="testInput"
-            rows="10"
-            autofocus
-            class="test-input"
-          ></textarea>
-          <div class="test-footer">
-            <div id="testResult" class="test-result">
-              <p>
-                Speed:
-                <span id="testResultSpeed" class="test-result-speed"></span>
-              </p>
-              <p>
-                accuracy:
-                <span
-                  id="testResultAccuracy"
-                  class="test-result-accuracy"
-                ></span>
-              </p>
+        </div>
+      </section>
+
+      <section id="customTest" class="sec-ct">
+        <div class="sec-ct__bg"></div>
+        <div class="sec-ct__content">
+          <div class="sec-ct__header__wrapper">
+            <h1 class="sec-ct__content_header">Add custom test and save</h1>
+            <img  class="sec-ct__content_img"  src="./style/images/pickachu-right.png"  />
+          </div>
+          <div>
+            <textarea
+              oninput="testTemplateInputChange(event);"
+              id="testTemplateInput"
+              class="test-template-input"
+              rows="10"
+            ></textarea>
+            <div class="test-template__info">
+              <span
+                id="testTemplateInfo"
+                class="test-template__info__word-count"
+              ></span>
             </div>
-            <button id="btnEndTest" class="btn btn-end-test">End Test</button>
+            <div class="test-template__buttons-container">
+              <button
+                id="btnSaveTemplate"
+                class="btn"
+                onclick="saveTemplate(event);"
+              >
+                Save Template
+              </button>
+            </div>
           </div>
         </div>
-      </main>
-      <footer>
-        <a
-          class="git-link"
-          target="_blank"
-          href="https://github.com/RyanGonzalezUSA"
-          ><i class="fab fa-github-square"></i
-        ></a>
-      </footer>
+      </section>
+
+      <section id="takeTest" class="sec-ts">
+        <div class="sec-ts-bg"></div>
+        <div class="sec-ts-content">
+          <div id="carContainer" class="car-container">
+            <img src="./style/images/car3.gif" class="car" id="car" alt="" />
+            <div class="end-line"></div>
+          </div>
+
+          <div id="timerContainer" class="timer-container">
+            <span class="timer" id="timer">00:00:00</span>
+          </div>
+          <div class="script-test-container">
+            <div id="scriptContainer" class="script-container">
+              I've learned that people will forget what you said, people will
+              forget what you did, but people will never forget how you made
+              them feel.
+            </div>
+            <div id="scriptInfo" class="script-info">
+              <span id="wordCount" class="word-count"></span>
+            </div>
+            <textarea
+              id="testInput"
+              name="testInput"
+              rows="8"
+              class="test-input"
+            ></textarea>
+            <div class="test-footer">
+              <div id="testResult" class="test-result">
+                <span id="testResultSpeed" class="test-result-speed"></span></<span>
+              </div>
+              <div>
+                <button onclick="getRandomQuote(event);" id="btnRandomQuote" class="btn">Random Quote</button>
+                <button id="btnEndTest" class="btn">End Test</button>
+              </div>
+        
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="sec-contact">
+        <div class="sec-contact__img__wrapper">
+          <img class="sec-contact__img" src="./style/images/contact_me.png"/>
+        </div>
+        <div class="sec-contact__content">
+            <div style="width: 100%;">
+              <a  target="_blank" href="https://github.com/RyanGonzalezUSA" ><i class="fab fa-github-square"></i>
+              check my work at github</a>
+            </div>
+            <div style="width: 100%;">
+              <a target="_blank" href="https://github.com/RyanGonzalezUSA" ><i class="fab fa-linkedin"></i>
+                contact me on linkedin</a>
+            </div>
+        </div>
+      </section>
     </div>
 
     <!-- The Modal -->
@@ -101,10 +153,15 @@
       <div class="modal-content">
         <span class="close" onclick="closeCongratsModal();">&times;</span>
         <div class="congrats-content">
-          <img class="pikachu" src="./style/images/pikachu.png" alt="congratulations">
-            <p class="congrats-msg">Congratulations</p>
+          <img  class="pikachu" src="./style/images/giphy.gif" alt="congratulations"/>
+          <p class="congrats-msg">Congratulations</p>
         </div>
       </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <script>
+      var scroll = new SmoothScroll('.navbar a[href*="#"]', { speed: 1000 });
+    </script>
   </body>
 </html>
